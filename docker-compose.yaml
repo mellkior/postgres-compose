@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  db:
+    # https://hub.docker.com/_/postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+  adminer:
+    # https://hub.docker.com/_/adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
